@@ -3,5 +3,8 @@ test("GET to api/v1/status must return 200", async () => {
   expect(res.status).toBe(200);
 
   const responseBody = await res.json();
-  console.log(responseBody);
+  expect(responseBody.updated_at).toBeDefined();
+
+  const parsedDate = new Date(responseBody.updated_at).toISOString();
+  expect(parsedDate).toEqual(responseBody.updated_at);
 });
