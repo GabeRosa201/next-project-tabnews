@@ -7,4 +7,13 @@ test("GET to api/v1/status must return 200", async () => {
 
   const parsedDate = new Date(responseBody.updated_at).toISOString();
   expect(parsedDate).toEqual(responseBody.updated_at);
+
+  // Verifica conexoes maximas
+
+  expect(responseBody.server.max_connection).toBeDefined();
+  expect(responseBody.server.max_connection).toBe(100);
+
+  // Verifica a versão do banco
+  expect(responseBody.server.version).toBeDefined();
+  expect(responseBody.server.version).toBe("16.3.20");
 });
