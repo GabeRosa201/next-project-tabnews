@@ -10,10 +10,10 @@ test("GET to api/v1/status must return 200", async () => {
 
   // Verifica conexoes maximas
 
-  expect(responseBody.server.max_connection).toBeDefined();
-  expect(responseBody.server.max_connection).toBe(100);
+  expect(responseBody.dependencies.database.max_connections).toBeDefined();
+  expect(responseBody.dependencies.database.max_connections).toBe("100");
 
   // Verifica a versão do banco
-  expect(responseBody.server.version).toBeDefined();
-  expect(responseBody.server.version).toBe("16.3.20");
+  expect(responseBody.dependencies.database.version).toBeDefined();
+  expect(responseBody.dependencies.database.version).toBe("16.9");
 });

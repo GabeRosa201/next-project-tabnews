@@ -4,14 +4,22 @@ async function status(req, res) {
   // const uptadedAt = Date.now() -> Obtem a data no formato de timestapm
   const uptadedAt = new Date().toISOString();
 
-  const max_connections = await database.query("SHOW max_connections;");
-  const version_pg = await database.query("SHOW server_version;");
+  const maxConnectionsResult = await database.query("SHOW max_connections;");
+  console.log(maxConnectionsResult.rows[0].max_connections);
+  const maxConnectionsValue = maxConnectionsResult.rows[0].max_connections;
+
+  const versionPgResult = await database.query("SHOW server_version;");
+
+  const versionPostgresValue = versionPgResult.rows[0].server_version;
+
   // console.log(result.rows);
   res.status(200).json({
     updated_at: uptadedAt,
-    server: {
-      max_connection: max_connections,
-      version: version_pg,
+    dependencies: {
+      database: {
+        version: versionPostgresValue,
+        max_connections: maxConnectionsValue,
+      },
     },
   });
 }
