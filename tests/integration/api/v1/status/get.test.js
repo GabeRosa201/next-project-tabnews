@@ -16,4 +16,7 @@ test("GET to api/v1/status must return 200", async () => {
   // Verifica a versão do banco
   expect(responseBody.dependencies.database.version).toBeDefined();
   expect(responseBody.dependencies.database.version).toBe("16.9");
+
+  expect(responseBody.dependencies.database.opened_connections).toBeDefined();
+  expect(responseBody.dependencies.database.opened_connections).toBe(1);
 });
