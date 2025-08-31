@@ -22,7 +22,7 @@ function Home() {
         }}
       >
         <h1 style={{ fontSize: "2rem", color: "#333" }}>
-          🚧 Contruindo uma oportunidade...
+          🚧 Construindo uma oportunidade...
         </h1>
         <p style={{ fontSize: "1.2rem", color: "#666" }}>
           Se prepare para algo novo! Volte em breve!
